@@ -1,6 +1,17 @@
+[workspace]
+members = []
+resolver = "2"
+
 [package]
 name = "backend"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+path = "lib.rs"
 
 [dependencies]
+candid = "0.10.13"
+ic-cdk = "0.17.1"
+ic-llm = "1.1.0"
