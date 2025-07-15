@@ -3,6 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-vermillion-200: #ffd1dc;
+  --color-vermillion-400: #ff6f61;
+  --color-vermillion-500: #ff5a3d;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

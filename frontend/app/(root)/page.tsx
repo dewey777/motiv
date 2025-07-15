@@ -3,6 +3,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import floatingHearts from "@/animations/floating-hearts.json";
+import { Navbar } from "@/components/navbar";
+import { Feature } from "@/components/hero/feature";
+import { Review } from "@/components/hero/review";
 
 export default function HeroPage() {
   return (
@@ -122,27 +125,7 @@ export default function HeroPage() {
           d="M0,64L40,80C80,96,160,128,240,128C320,128,400,96,480,80C560,64,640,64,720,85.3C800,107,880,149,960,160C1040,171,1120,149,1200,154.7C1280,160,1360,192,1400,208L1440,224L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
         />
       </svg>
-
-      <header className="relative z-10 flex items-center justify-between px-6 py-4 shadow-sm">
-        <h1
-          className="text-2xl font-bold text-[#FF6F61]"
-          style={{ fontFamily: "var(--font-baloo-2)" }}
-        >
-          Motiv
-        </h1>
-        <nav className="space-x-6 text-sm">
-          <a href="#" className="hover:underline text-[#4B5563]">
-            Home
-          </a>
-          <a href="#" className="hover:underline text-[#4B5563]">
-            Features
-          </a>
-          <a href="#" className="hover:underline text-[#4B5563]">
-            Pricing
-          </a>
-        </nav>
-      </header>
-
+      <Navbar />
       {/* Hero Section */}
       <section className="relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between px-6 py-16 gap-12 max-w-7xl mx-auto">
         {/* Text Content */}
@@ -222,111 +205,40 @@ export default function HeroPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3
-              className="text-3xl md:text-5xl font-bold text-[#FF6F61] mb-6"
-              style={{ fontFamily: "var(--font-baloo-2)" }}
-            >
+            <h3 className="text-3xl md:text-5xl font-bold font-baloo-2 text-[#FF6F61] mb-6">
               Why Choose Motiv? ✨
             </h3>
-            <p
-              className="text-lg text-[#374151] max-w-2xl mx-auto"
-              style={{ fontFamily: "var(--font-nunito)" }}
-            >
+            <p className="text-lg text-slate-600 font-nunito max-w-2xl mx-auto">
               Our AI companions are designed to provide you with the most
               personalized and caring support
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
-            >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-                className="w-16 h-16 bg-gradient-to-r from-[#FFB6C1] to-[#FFC0CB] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg"
-              >
-                <span className="text-2xl">🧠</span>
-              </motion.div>
-              <h4
-                className="text-xl font-bold text-[#FF6F61] mb-4"
-                style={{ fontFamily: "var(--font-baloo-2)" }}
-              >
-                AI Swarm Intelligence
-              </h4>
-              <p
-                className="text-[#374151]"
-                style={{ fontFamily: "var(--font-nunito)" }}
-              >
-                Multiple AI minds working together to understand you better and
-                provide more thoughtful responses
-              </p>
-            </motion.div>
-
-            {/* Feature 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
-            >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: -5 }}
-                transition={{ duration: 0.3 }}
-                className="w-16 h-16 bg-gradient-to-r from-[#B5EAD7] to-[#C7CEEA] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg"
-              >
-                <span className="text-2xl">🔒</span>
-              </motion.div>
-              <h4
-                className="text-xl font-bold text-[#FF6F61] mb-4"
-                style={{ fontFamily: "var(--font-baloo-2)" }}
-              >
-                Complete Privacy
-              </h4>
-              <p
-                className="text-[#374151]"
-                style={{ fontFamily: "var(--font-nunito)" }}
-              >
-                Your conversations are completely private. Your data belongs to
-                you, always and forever
-              </p>
-            </motion.div>
-
-            {/* Feature 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
-            >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-                className="w-16 h-16 bg-gradient-to-r from-[#FFD1DC] to-[#FFEAA7] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg"
-              >
-                <span className="text-2xl">💖</span>
-              </motion.div>
-              <h4
-                className="text-xl font-bold text-[#FF6F61] mb-4"
-                style={{ fontFamily: "var(--font-baloo-2)" }}
-              >
-                Always Caring
-              </h4>
-              <p
-                className="text-[#374151]"
-                style={{ fontFamily: "var(--font-nunito)" }}
-              >
-                Available whenever you need support, with empathy and
-                understanding that never judges
-              </p>
-            </motion.div>
+            <Feature
+              className="from-red-100 to-pink-100"
+              title="AI Swarm Intelligence"
+              delay={0.1}
+              icon="🧠"
+              description="Multiple AI minds working together to understand you better and
+                provide more thoughtful responses"
+            />
+            <Feature
+              title="Complete Privacy"
+              icon="🔒"
+              delay={0.2}
+              className="from-green-100 to-purple-100"
+              description=" Your conversations are completely private. Your data belongs to
+                you, always and forever"
+            />
+            <Feature
+              title="Always Caring"
+              icon="💖"
+              delay={0.3}
+              className="from-vermillion-200 to-orange-100 "
+              description="Available whenever you need support, with empathy and
+                understanding that never judges"
+            />
           </div>
         </div>
       </section>
@@ -340,31 +252,21 @@ export default function HeroPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h3
-              className="text-3xl md:text-4xl font-bold text-[#FF6F61] mb-4"
-              style={{ fontFamily: "var(--font-baloo-2)" }}
-            >
+            <h3 className="text-3xl md:text-4xl font-baloo-2 font-bold text-[#FF6F61] mb-4">
               Trusted by Many 🌟
             </h3>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 text-center gap-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-center"
             >
-              <div
-                className="text-4xl md:text-5xl font-bold text-[#FF6F61] mb-2"
-                style={{ fontFamily: "var(--font-baloo-2)" }}
-              >
+              <div className="text-4xl md:text-5xl font-baloo-2 font-bold text-[#FF6F61] mb-2">
                 10x
               </div>
-              <p
-                className="text-[#374151] font-medium"
-                style={{ fontFamily: "var(--font-nunito)" }}
-              >
+              <p className="text-slate-600 font-nunito font-medium">
                 More Affordable
               </p>
             </motion.div>
@@ -375,16 +277,10 @@ export default function HeroPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-center"
             >
-              <div
-                className="text-4xl md:text-5xl font-bold text-[#FF6F61] mb-2"
-                style={{ fontFamily: "var(--font-baloo-2)" }}
-              >
+              <div className="text-4xl md:text-5xl font-baloo-2 font-bold text-[#FF6F61] mb-2">
                 100%
               </div>
-              <p
-                className="text-[#374151] font-medium"
-                style={{ fontFamily: "var(--font-nunito)" }}
-              >
+              <p className="text-slate-600 font-nunito font-medium">
                 Privacy Protected
               </p>
             </motion.div>
@@ -395,16 +291,10 @@ export default function HeroPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-center"
             >
-              <div
-                className="text-4xl md:text-5xl font-bold text-[#FF6F61] mb-2"
-                style={{ fontFamily: "var(--font-baloo-2)" }}
-              >
+              <div className="text-4xl md:text-5xl font-baloo-2 font-bold text-[#FF6F61] mb-2">
                 AI+
               </div>
-              <p
-                className="text-[#374151] font-medium"
-                style={{ fontFamily: "var(--font-nunito)" }}
-              >
+              <p className="text-slate-600 font-nunito font-medium">
                 Collaborative Care
               </p>
             </motion.div>
@@ -421,150 +311,47 @@ export default function HeroPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3
-              className="text-3xl md:text-5xl font-bold text-[#FF6F61] mb-6"
-              style={{ fontFamily: "var(--font-baloo-2)" }}
-            >
+            <h3 className="text-3xl md:text-5xl font-baloo-2 font-bold text-[#FF6F61] mb-6">
               Stories of Hope 💝
             </h3>
-            <p
-              className="text-lg text-[#374151] max-w-2xl mx-auto"
-              style={{ fontFamily: "var(--font-nunito)" }}
-            >
+            <p className="text-lg text-slate-600 font-nunito max-w-2xl mx-auto">
               Real experiences from people who found their way to better mental
               wellness
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Testimonial 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-[#FF9AA2] to-[#FFDEE9] rounded-full flex items-center justify-center mr-4">
-                  <span className="text-xl">👩</span>
-                </div>
-                <div>
-                  <h4
-                    className="font-bold text-[#FF6F61]"
-                    style={{ fontFamily: "var(--font-baloo-2)" }}
-                  >
-                    Sarah M.
-                  </h4>
-                  <p
-                    className="text-sm text-[#6B7280]"
-                    style={{ fontFamily: "var(--font-nunito)" }}
-                  >
-                    College Student
-                  </p>
-                </div>
-              </div>
-              <p
-                className="text-[#374151] italic"
-                style={{ fontFamily: "var(--font-nunito)" }}
-              >
-                &ldquo;Motiv helped me through my anxiety during finals week.
+            <Review
+              avatar="👩"
+              delay={0.1}
+              className="from-rose-300 to-rose-100"
+              name="Sarah M."
+              description="&ldquo;Motiv helped me through my anxiety during finals week.
                 The AI really understood what I was going through and gave me
-                practical coping strategies.&rdquo;
-              </p>
-              <div className="flex mt-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-400">
-                    ⭐
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Testimonial 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-[#B5EAD7] to-[#C7CEEA] rounded-full flex items-center justify-center mr-4">
-                  <span className="text-xl">👨</span>
-                </div>
-                <div>
-                  <h4
-                    className="font-bold text-[#FF6F61]"
-                    style={{ fontFamily: "var(--font-baloo-2)" }}
-                  >
-                    Alex K.
-                  </h4>
-                  <p
-                    className="text-sm text-[#6B7280]"
-                    style={{ fontFamily: "var(--font-nunito)" }}
-                  >
-                    Working Professional
-                  </p>
-                </div>
-              </div>
-              <p
-                className="text-[#374151] italic"
-                style={{ fontFamily: "var(--font-nunito)" }}
-              >
-                &ldquo;I was skeptical at first, but the AI companions feel so
+                practical coping strategies.&rdquo;"
+              job="Housewife"
+            />
+            <Review
+              avatar="👨"
+              delay={0.2}
+              className="from-green-100 to-purple-100"
+              name="Alex K."
+              description="&ldquo;I was skeptical at first, but the AI companions feel so
                 genuine. It&rsquo;s like having a caring friend who&rsquo;s
-                always there to listen.&rdquo;
-              </p>
-              <div className="flex mt-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-400">
-                    ⭐
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+                always there to listen.&rdquo;"
+              job="College Student"
+            />
 
-            {/* Testimonial 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-[#FFD1DC] to-[#FFEAA7] rounded-full flex items-center justify-center mr-4">
-                  <span className="text-xl">👵</span>
-                </div>
-                <div>
-                  <h4
-                    className="font-bold text-[#FF6F61]"
-                    style={{ fontFamily: "var(--font-baloo-2)" }}
-                  >
-                    Maria R.
-                  </h4>
-                  <p
-                    className="text-sm text-[#6B7280]"
-                    style={{ fontFamily: "var(--font-nunito)" }}
-                  >
-                    Retired Teacher
-                  </p>
-                </div>
-              </div>
-              <p
-                className="text-[#374151] italic"
-                style={{ fontFamily: "var(--font-nunito)" }}
-              >
-                &ldquo;At my age, I thought technology would be too complicated.
+            <Review
+              avatar="👵"
+              delay={0.3}
+              className="from-red-100 to-yellow-100"
+              name="Maria R."
+              description="&ldquo;At my age, I thought technology would be too complicated.
                 But Motiv is so easy to use and the support feels so warm and
-                personal.&rdquo;
-              </p>
-              <div className="flex mt-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-400">
-                    ⭐
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+                personal.&rdquo;"
+              job="Retired Teacher"
+            />
           </div>
         </div>
       </section>
