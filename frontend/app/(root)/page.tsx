@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import floatingHearts from "@/animations/floating-hearts.json";
@@ -9,8 +10,7 @@ import { Review } from "@/components/hero/review";
 
 export default function HeroPage() {
   return (
-    <main className="relative min-h-screen w-full text-[#1F1F1F] overflow-hidden">
-      {/* Floating Background Decorations */}
+    <main className="relative min-h-screen w-full text-gray-600 overflow-hidden">
       <div className="fixed inset-0 pointer-events-none z-0">
         {/* Floating circles */}
         <motion.div
@@ -106,8 +106,6 @@ export default function HeroPage() {
           🌸
         </motion.div>
       </div>
-
-      {/* Gradient Wave Background */}
       <svg
         className="absolute inset-0 w-full h-full z-0"
         viewBox="0 0 1440 320"
@@ -126,7 +124,6 @@ export default function HeroPage() {
         />
       </svg>
       <Navbar />
-      {/* Hero Section */}
       <section className="relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between px-6 py-16 gap-12 max-w-7xl mx-auto">
         {/* Text Content */}
         <motion.div
@@ -152,9 +149,11 @@ export default function HeroPage() {
             className="flex justify-center lg:justify-start gap-4"
             style={{ fontFamily: "var(--font-nunito)" }}
           >
-            <button className="bg-[#FF9AA2] hover:bg-[#ffb2b7] text-white font-semibold py-3 px-6 rounded-full shadow-md transition-all duration-200">
-              Start Talking
-            </button>
+            <Link href="/chat">
+              <button className="bg-[#FF9AA2] hover:bg-[#ffb2b7] text-white font-semibold py-3 px-6 rounded-full shadow-md transition-all duration-200">
+                Start Talking
+              </button>
+            </Link>
             <button className="bg-[#B5EAD7] hover:bg-[#c7f1e3] text-[#1F1F1F] font-semibold py-3 px-6 rounded-full shadow-inner transition-all duration-200">
               Learn More
             </button>
@@ -480,9 +479,11 @@ export default function HeroPage() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
             style={{ fontFamily: "var(--font-nunito)" }}
           >
-            <button className="bg-[#FF9AA2] hover:bg-[#ffb2b7] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-              Start Free Trial 💫
-            </button>
+            <Link href="/chat">
+              <button className="bg-[#FF9AA2] hover:bg-[#ffb2b7] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                Start Free Trial 💫
+              </button>
+            </Link>
             <button className="bg-white/80 hover:bg-white text-[#FF6F61] font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#FF9AA2]">
               Watch Demo 🎥
             </button>

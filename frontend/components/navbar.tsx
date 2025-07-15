@@ -1,6 +1,7 @@
 "use client";
 
 import { useAuth } from "@/hooks/useAuth";
+import Link from "next/link";
 
 export function Navbar() {
   const { isAuthenticated, principal, login, logout, isLoading } = useAuth();
@@ -25,15 +26,17 @@ export function Navbar() {
       </h1>
       <div className="flex items-center space-x-6">
         <nav className="space-x-6 text-sm">
-          <a href="#" className="hover:underline text-slate-600">
+          <Link href="/" className="hover:underline text-slate-600">
             Home
-          </a>
-          <a href="#" className="hover:underline text-slate-600">
+          </Link>
+          <Link href="/features" className="hover:underline text-slate-600">
             Features
-          </a>
-          <a href="#" className="hover:underline text-slate-600">
-            Pricing
-          </a>
+          </Link>
+          {isAuthenticated && (
+            <Link href="/chat" className="hover:underline text-slate-600">
+              Chat
+            </Link>
+          )}
         </nav>
 
         {isLoading ? (
