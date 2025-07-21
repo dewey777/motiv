@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useAuth } from "./useAuth";
+import { useAuth } from "@/context/auth-context";
 
 interface UserPoints {
   points: number;
