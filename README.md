@@ -1,125 +1,306 @@
-# MOTIV 프로젝트 통합 README
+# MOTIV - Web3 Community Platform
 
-## 프로젝트 개요
+## Project Overview
 
-Motiv는 커뮤니티, 상담, 채팅, 익명 노트 등 다양한 기능을 제공하며, 데이터의 신뢰성과 투명성을 위해 IPFS 및 ICP(Internet Computer Protocol)와 연동되는 Web3 기반 서비스입니다.
+MOTIV is a comprehensive Web3-based community platform that integrates blockchain technology with traditional social features. The platform provides community management, AI-powered consultation, real-time chat, and anonymous note systems, all while ensuring data transparency and immutability through IPFS (InterPlanetary File System) and ICP (Internet Computer Protocol) integration.
+
+### Key Features
+- **Community Management**: Create, read, update, and delete posts with comments and reactions
+- **AI Consultation**: Intelligent agent system for user guidance and support
+- **Real-time Chat**: Secure messaging with blockchain-based data verification
+- **Anonymous Notes**: Privacy-focused anonymous communication system
+- **Web3 Authentication**: Wallet-based authentication using digital signatures
+- **Blockchain Integration**: IPFS for decentralized storage and ICP for transaction recording
 
 ---
 
-## 폴더 구조
+## Project Structure
 
 ```
 motiv/
-├── backend/                # FastAPI 기반 백엔드
+├── backend/                    # FastAPI-based backend server
 │   ├── app/
-│   │   ├── routers/        # 주요 API 라우터 (community, chat, agent, anonymous_note, auth)
-│   │   ├── api/endpoints/  # 실제 엔드포인트 구현
-│   │   ├── core/           # 인증, IPFS, ICP, 로깅 등 핵심 모듈
-│   │   ├── models/         # ORM 및 데이터 모델
-│   │   ├── schemas/        # Pydantic 스키마
-│   │   └── ...             
-│   ├── contracts/          # Solidity 스마트 컨트랙트
-│   └── requirements.txt    # Python 의존성
-├── frontend/               # Next.js 기반 프론트엔드
-│   ├── app/                # 페이지 및 라우팅
-│   ├── components/         # UI 컴포넌트
-│   ├── context/            # 전역 상태 관리
-│   ├── hooks/              # 커스텀 훅
-│   ├── public/             # 정적 파일
-│   └── package.json        # JS 의존성
-└── ...
+│   │   ├── routers/           # API route handlers (community, chat, agent, anonymous_note, auth)
+│   │   ├── api/endpoints/     # Detailed endpoint implementations
+│   │   ├── core/              # Core modules (authentication, IPFS, ICP, logging)
+│   │   ├── models/            # Database ORM models
+│   │   ├── schemas/           # Pydantic data validation schemas
+│   │   ├── crud/              # Database CRUD operations
+│   │   └── database.py        # Database connection configuration
+│   ├── contracts/             # Solidity smart contracts
+│   │   ├── IpfsStorage.sol    # IPFS hash storage contract
+│   │   └── README.md          # Smart contract documentation
+│   └── requirements.txt       # Python dependencies
+├── frontend/                  # Next.js-based frontend application
+│   ├── app/                   # Next.js app directory (pages and routing)
+│   ├── components/            # Reusable UI components
+│   ├── context/               # React context for state management
+│   ├── hooks/                 # Custom React hooks
+│   ├── lib/                   # Utility libraries and configurations
+│   ├── public/                # Static assets
+│   ├── animations/            # Animation configurations
+│   └── package.json           # Node.js dependencies and scripts
+└── README.md                  # This file
 ```
 
 ---
 
-## 프론트엔드 (Next.js)
+## Frontend (Next.js)
 
-- **주요 기술**: Next.js, React 19, TailwindCSS, Dfinity SDK
-- **실행 방법**:
-  ```bash
-  cd frontend
-  npm install
-  npm run dev
-  ```
-- **주요 의존성**:  
-  - `@dfinity/agent`, `@dfinity/auth-client` 등(ICP 연동)
-  - `framer-motion`, `lottie-react` 등(애니메이션)
-  - `tailwindcss` (스타일링)
-- **기능**:
-  - 커뮤니티 게시글/댓글 작성 및 조회
-  - 실시간 채팅
-  - AI 상담 요청
-  - 익명 노트 작성/반응/답글
-  - Web3 인증 및 ICP 연동
+### Technology Stack
+- **Framework**: Next.js 15.3.5 with App Router
+- **UI Library**: React 19
+- **Styling**: TailwindCSS 4
+- **Blockchain Integration**: Dfinity SDK (@dfinity/agent, @dfinity/auth-client)
+- **Animations**: Framer Motion, Lottie React
+- **Development**: TypeScript, ESLint, Prettier
 
----
+### Getting Started
 
-## 백엔드 (FastAPI)
+1. **Install Dependencies**:
+   ```bash
+   cd frontend
+   npm install
+   # or
+   pnpm install
+   ```
 
-- **주요 기술**: FastAPI, SQLAlchemy, Pydantic, IPFS, ICP 연동
-- **실행 방법**:
-  ```bash
-  cd backend
-  pip install -r requirements.txt
-  uvicorn app.main:app --reload
-  ```
-- **주요 의존성**:  
-  - `fastapi`, `uvicorn`
-- **핵심 기능**:
-  - 커뮤니티(게시글/댓글/좋아요)
-  - 실시간 채팅
-  - AI 상담
-  - 익명 노트
-  - Web3 인증(JWT, 서명 검증)
-  - IPFS/ICP 연동(데이터 해시 및 트랜잭션 기록)
+2. **Run Development Server**:
+   ```bash
+   npm run dev
+   # or
+   pnpm dev
+   ```
 
----
+3. **Access Application**:
+   Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## 백엔드 API 엔드포인트 요약
+### Key Dependencies
+- `@dfinity/agent`: ICP blockchain interaction
+- `@dfinity/auth-client`: Web3 authentication
+- `@dfinity/identity`: Identity management
+- `framer-motion`: Smooth animations
+- `lottie-react`: Lottie animation support
+- `lucide-react`: Icon library
+- `tailwindcss`: Utility-first CSS framework
 
-### 인증
-- `POST /auth/login` : Web3 지갑 서명 기반 로그인(JWT 발급)
-
-### 커뮤니티
-- `POST /community/posts` : 게시글 생성
-- `GET /community/posts` : 게시글 목록 조회
-- `GET /community/posts/{post_id}` : 게시글 단건 조회
-- `PUT /community/posts/{post_id}` : 게시글 수정
-- `DELETE /community/posts/{post_id}` : 게시글 삭제
-- `POST /community/posts/{post_id}/like` : 게시글 좋아요
-- `POST /community/posts/{post_id}/comments` : 댓글 작성
-- `GET /community/posts/{post_id}/comments` : 댓글 목록 조회
-- `PUT /community/comments/{comment_id}` : 댓글 수정
-- `DELETE /community/comments/{comment_id}` : 댓글 삭제
-- `POST /community/comments/{comment_id}/like` : 댓글 좋아요
-
-### 채팅
-- `POST /chat/start` : 채팅 세션 시작(개인정보 IPFS/ICP 기록)
-- `POST /chat/message` : 메시지 전송(IPFS/ICP 기록)
-- `GET /chat/history?user_id={id}` : 채팅 내역 조회
-
-### AI 상담
-- `POST /agent/ask` : AI 상담 요청(IPFS/ICP 기록)
-
-### 익명 노트
-- `POST /anonymous_note/send` : 익명 노트 전송(IPFS/ICP 기록)
-- `GET /anonymous_note/recent` : 최근 익명 노트 조회
-- `POST /anonymous_note/{note_id}/reply` : 노트에 답글 작성
-- `POST /anonymous_note/{note_id}/react` : 노트에 반응(이모지 등)
+### Features
+- **Responsive Design**: Mobile-first approach with TailwindCSS
+- **Web3 Integration**: Seamless blockchain wallet connection
+- **Real-time Updates**: Live data synchronization
+- **Component Library**: Reusable UI components with Radix UI
+- **Type Safety**: Full TypeScript implementation
 
 ---
 
-## 스마트 컨트랙트
+## Backend (FastAPI)
 
-- **위치**: `backend/contracts/`
-- **IpfsStorage.sol**  
-  - IPFS 해시를 블록체인에 저장/관리하는 Solidity 스마트 컨트랙트
-  - 함수: `addFile(string ipfsHash)`, `getFile(uint fileId)`
+### Technology Stack
+- **Framework**: FastAPI
+- **Database**: SQLAlchemy ORM
+- **Data Validation**: Pydantic
+- **Blockchain Integration**: IPFS and ICP APIs
+- **Authentication**: JWT with digital signature verification
+- **Server**: Uvicorn ASGI server
+
+### Getting Started
+
+1. **Install Dependencies**:
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
+
+2. **Run Development Server**:
+   ```bash
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+   ```
+
+3. **Access API Documentation**:
+   - Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
+   - ReDoc: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+### Core Dependencies
+- `fastapi`: Modern web framework for building APIs
+- `uvicorn`: ASGI server implementation
+- `sqlalchemy`: Database ORM
+- `pydantic`: Data validation using Python type annotations
+
+### Architecture
+- **Modular Design**: Separated routers for different features
+- **Middleware Integration**: CORS, authentication, logging
+- **Error Handling**: Comprehensive error management
+- **Data Validation**: Request/response validation with Pydantic
+- **Blockchain Integration**: IPFS upload and ICP transaction recording
 
 ---
 
-## 기타
+## API Endpoints Documentation
 
-- IPFS/ICP 연동은 각 API에서 데이터 해시 및 트랜잭션을 기록하여 투명성 보장
-- Web3 인증은 지갑 서명 기반(JWT 발급)
-- 추가 컨트랙트 및 기능은 `backend/contracts/`에 확장 가능
+### Authentication
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/auth/login` | Web3 wallet signature-based authentication |
+
+**Request Body**:
+```json
+{
+  "wallet_address": "string",
+  "signature": "string",
+  "message": "string"
+}
+```
+
+**Response**:
+```json
+{
+  "access_token": "string",
+  "token_type": "bearer",
+  "wallet_address": "string"
+}
+```
+
+### Community Management
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/community/posts` | Create a new community post |
+| `GET` | `/community/posts` | Retrieve paginated list of posts |
+| `GET` | `/community/posts/{post_id}` | Get specific post details |
+| `PUT` | `/community/posts/{post_id}` | Update existing post |
+| `DELETE` | `/community/posts/{post_id}` | Delete post |
+| `POST` | `/community/posts/{post_id}/like` | Like/unlike a post |
+| `POST` | `/community/posts/{post_id}/comments` | Add comment to post |
+| `GET` | `/community/posts/{post_id}/comments` | Get post comments |
+| `PUT` | `/community/comments/{comment_id}` | Update comment |
+| `DELETE` | `/community/comments/{comment_id}` | Delete comment |
+| `POST` | `/community/comments/{comment_id}/like` | Like/unlike comment |
+
+### Chat System
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/chat/start` | Initialize chat session with user info |
+| `POST` | `/chat/message` | Send chat message |
+| `GET` | `/chat/history` | Retrieve chat history for user |
+
+### AI Consultation
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/agent/ask` | Submit consultation request to AI agent |
+
+### Anonymous Notes
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/anonymous_note/send` | Send anonymous note |
+| `GET` | `/anonymous_note/recent` | Get recent anonymous notes |
+| `POST` | `/anonymous_note/{note_id}/reply` | Reply to anonymous note |
+| `POST` | `/anonymous_note/{note_id}/react` | React to anonymous note |
+
+---
+
+## Smart Contracts
+
+### Location
+All smart contracts are located in the `backend/contracts/` directory.
+
+### IpfsStorage.sol
+A Solidity smart contract for storing and managing IPFS hashes on the Ethereum blockchain.
+
+**Key Functions**:
+- `addFile(string memory _ipfsHash)`: Add new IPFS hash to blockchain
+- `getFile(uint256 _fileId)`: Retrieve file information by ID
+
+**Contract Features**:
+- Immutable IPFS hash storage
+- Timestamp recording for each file
+- Event emission for blockchain transparency
+- Gas-efficient operations
+
+**Usage Example**:
+```solidity
+// Add file to IPFS storage
+ipfsStorage.addFile("QmHash...");
+
+// Retrieve file information
+(string memory hash, uint256 timestamp) = ipfsStorage.getFile(1);
+```
+
+---
+
+## Blockchain Integration
+
+### IPFS (InterPlanetary File System)
+- **Purpose**: Decentralized file storage for data immutability
+- **Integration**: All user-generated content is hashed and stored on IPFS
+- **Benefits**: Content addressing, censorship resistance, data integrity
+
+### ICP (Internet Computer Protocol)
+- **Purpose**: Blockchain-based transaction recording
+- **Integration**: IPFS hashes are recorded as transactions on ICP
+- **Benefits**: Transparent audit trail, decentralized verification
+
+### Web3 Authentication
+- **Method**: Digital signature verification using wallet addresses
+- **Security**: Cryptographic proof of ownership
+- **Implementation**: JWT tokens issued after signature validation
+
+---
+
+## Development Guidelines
+
+### Code Style
+- **Frontend**: ESLint + Prettier configuration
+- **Backend**: Black code formatter (recommended)
+- **Smart Contracts**: Solidity style guide compliance
+
+### Testing
+- **Frontend**: Jest + React Testing Library
+- **Backend**: Pytest for API testing
+- **Smart Contracts**: Hardhat testing framework
+
+### Deployment
+- **Frontend**: Vercel (recommended) or any static hosting
+- **Backend**: Docker containers with cloud providers
+- **Smart Contracts**: Ethereum mainnet/testnet deployment
+
+---
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Setup
+1. Clone the repository
+2. Set up both frontend and backend environments
+3. Configure blockchain network connections
+4. Run tests to ensure everything works
+5. Start development servers
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## Support
+
+For support and questions:
+- Create an issue in the GitHub repository
+- Check the API documentation at `/docs` endpoint
+- Review the smart contract documentation in `backend/contracts/`
+
+---
+
+## Roadmap
+
+- [ ] Enhanced AI consultation features
+- [ ] Mobile application development
+- [ ] Advanced blockchain integration
+- [ ] Community governance features
+- [ ] Cross-chain compatibility
+- [ ] Advanced analytics and insights
